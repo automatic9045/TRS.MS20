@@ -1,0 +1,276 @@
+﻿<UserControl x:Class="TRS.MS20.Presentation.Components.ToolBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRS.MS20.Presentation.Components"
+             xmlns:converters="clr-namespace:TRS.MS20.Themes.Converters;assembly=TRS.MS20.Themes"
+             xmlns:components="clr-namespace:TRS.MS20.Themes.Components;assembly=TRS.MS20.Themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="40" d:DesignWidth="1020">
+    <UserControl.DataContext>
+        <local:ToolBarViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Padding" Value="-5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="All">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+            <Setter Property="Padding" Value="-5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="All">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="Padding" Value="-5"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="All">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="LockInMenuButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="Menu">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="LockInMenuToggleButton" TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="Menu">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="OneTimeButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+            <Setter Property="Foreground" Value="#800000"/>
+        </Style>
+        <Style x:Key="OperationTypeButton" TargetType="RadioButton" BasedOn="{StaticResource {x:Type RadioButton}}">
+            <Setter Property="Foreground" Value="#0000e0"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding LockMode.Value}" Value="Menu">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Setter Property="Content" Value=""/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <converters:BoolToNullableEnumConverter x:Key="BoolToNullableEnum"/>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="58"/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2"/>
+            <ColumnDefinition Width="58"/>
+            <ColumnDefinition Width="58"/>
+            <ColumnDefinition Width="58"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <components:WindowInputBindings>
+            <components:WindowInputBindings.Items>
+                <KeyBinding Key="{Binding MenuKey.Value}" Command="{Binding MenuButtonCommand}"/>
+                <KeyBinding Key="{Binding TestKey.Value}" Command="{Binding TestKeyCommand}"/>
+                <KeyBinding Key="{Binding RecoverKey.Value}" Command="{Binding RecoverButtonCommand}"/>
+                <KeyBinding Key="{Binding SwapKey.Value}" Command="{Binding SwapButtonCommand}"/>
+                <KeyBinding Key="{Binding SaveKey.Value}" Command="{Binding SaveButtonCommand}"/>
+                <KeyBinding Key="{Binding BeginOneTimeKey.Value}" Command="{Binding BeginOneTimeButtonCommand}"/>
+                <KeyBinding Key="{Binding FinishOneTimeKey.Value}" Command="{Binding FinishOneTimeButtonCommand}"/>
+                <KeyBinding Key="{Binding BreakKey.Value}" Command="{Binding BreakButtonCommand}"/>
+                <KeyBinding Key="{Binding Resume1Key.Value}" Command="{Binding Resume1ButtonCommand}"/>
+                <KeyBinding Key="{Binding Resume2Key.Value}" Command="{Binding Resume2ButtonCommand}"/>
+                <KeyBinding Key="{Binding BeginPackageOneTimeKey.Value}" Command="{Binding BeginPackageOneTimeButtonCommand}"/>
+                <KeyBinding Key="{Binding FinishPackageOneTimeKey.Value}" Command="{Binding FinishPackageOneTimeButtonCommand}"/>
+                <KeyBinding Key="{Binding RespondKey.Value}" Command="{Binding RespondButtonCommand}"/>
+                <KeyBinding Key="{Binding ClearRestKey.Value}" Command="{Binding ClearRestButtonCommand}"/>
+                <KeyBinding Key="{Binding CSKey.Value}" Command="{Binding CSKeyCommand}"/>
+                <KeyBinding Key="{Binding SumKey.Value}" Command="{Binding SumKeyCommand}"/>
+                <KeyBinding Key="{Binding SellKey.Value}" Command="{Binding SellKeyCommand}"/>
+                <KeyBinding Key="{Binding ReserveKey.Value}" Command="{Binding ReserveKeyCommand}"/>
+                <KeyBinding Key="{Binding InquireKey.Value}" Command="{Binding InquireKeyCommand}"/>
+                <KeyBinding Key="{Binding RelayKey.Value}" Command="{Binding RelayKeyCommand}"/>
+            </components:WindowInputBindings.Items>
+        </components:WindowInputBindings>
+
+        <Button Grid.Column="0" FontSize="20" Template="{StaticResource VeryThickButtonTemplate}" Command="{Binding MenuButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource LockInMenuButton}">
+                    <Setter Property="Content" Value="ﾒﾆｭｰ"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <ToggleButton Grid.Column="2" IsChecked="{Binding IsTestButtonChecked.Value}">
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource LockInMenuToggleButton}">
+                    <Setter Property="Content" Value="営試"/>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        <Button Grid.Column="3" Command="{Binding RecoverButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Content" Value="回復"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="4" Command="{Binding SwapButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Content" Value="切替"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="5" Command="{Binding SaveButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="保存"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="6" Command="{Binding BeginOneTimeButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="開始"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="7" Command="{Binding FinishOneTimeButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="終了"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="8" Command="{Binding BreakButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="中断"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="9" FontSize="12" Command="{Binding Resume1ButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="再開１"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="10" FontSize="12" Command="{Binding Resume2ButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="再開２"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="11" FontSize="10" Command="{Binding BeginPackageOneTimeButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="一括開始"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="12" FontSize="10" Command="{Binding FinishPackageOneTimeButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource OneTimeButton}">
+                    <Setter Property="Content" Value="一括発券"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="13" Command="{Binding RespondButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Content" Value="応答"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <Button Grid.Column="14" FontSize="12" Command="{Binding ClearRestButtonCommand}">
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource LockInMenuButton}">
+                    <Setter Property="Content" Value="残消去"/>
+                </Style>
+            </Button.Style>
+        </Button>
+        <ToggleButton Grid.Column="15" FontSize="12" IsChecked="{Binding IsCSButtonChecked.Value}">
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource LockInMenuToggleButton}">
+                    <Setter Property="Content" Value="ｸﾚｼﾞｯﾄ"/>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        <ToggleButton Grid.Column="16" FontSize="12" IsChecked="{Binding IsSumButtonChecked.Value}">
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource LockInMenuToggleButton}">
+                    <Setter Property="Content" Value="連加算"/>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+        
+        <RadioButton Grid.Column="18" GroupName="OperationType_Sell" Template="{StaticResource VeryThickButtonTemplate}"
+                     IsChecked="{Binding OperationType.Value, Converter={StaticResource BoolToNullableEnum}, Mode=TwoWay, ConverterParameter=Sell}">
+            <RadioButton.Style>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource OperationTypeButton}">
+                    <Setter Property="Content" Value="発売"/>
+                </Style>
+            </RadioButton.Style>
+        </RadioButton>
+        <RadioButton Grid.Column="19" GroupName="OperationType_Reserve" Template="{StaticResource VeryThickButtonTemplate}"
+                     IsChecked="{Binding OperationType.Value, Converter={StaticResource BoolToNullableEnum}, Mode=TwoWay, ConverterParameter=Reserve}">
+            <RadioButton.Style>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource OperationTypeButton}">
+                    <Setter Property="Content" Value="予約"/>
+                </Style>
+            </RadioButton.Style>
+        </RadioButton>
+        <RadioButton Grid.Column="20" GroupName="OperationType_Inquire" Template="{StaticResource VeryThickButtonTemplate}"
+                     IsChecked="{Binding OperationType.Value, Converter={StaticResource BoolToNullableEnum}, Mode=TwoWay, ConverterParameter=Inquire}">
+            <RadioButton.Style>
+                <Style TargetType="RadioButton" BasedOn="{StaticResource OperationTypeButton}">
+                    <Setter Property="Content" Value="照会"/>
+                </Style>
+            </RadioButton.Style>
+        </RadioButton>
+        
+        <ToggleButton Grid.Column="21" IsChecked="{Binding IsRelayButtonChecked.Value}">
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource LockInMenuToggleButton}">
+                    <Setter Property="Content" Value="中継"/>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+    </Grid>
+</UserControl>

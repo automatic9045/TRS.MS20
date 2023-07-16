@@ -1,0 +1,8 @@
+﻿<Application x:Class="TRS.MS20.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TRS.MS20">
+    <Application.Resources>
+        <ResourceDictionary Source="pack://application:,,,/TRS.MS20.Themes;component/Basic.xaml"/>
+    </Application.Resources>
+</Application>

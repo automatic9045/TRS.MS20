@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="TRS.MS20.Presentation.Components.LowerStatusBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRS.MS20.Presentation.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="22" d:DesignWidth="1020">
+    <UserControl.DataContext>
+        <local:LowerStatusBarViewModel/>
+    </UserControl.DataContext>
+    <Grid>
+        <StackPanel Margin="5 0 0 0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="local:ProgressLamp">
+                    <Setter Property="Margin" Value="0 0 1 0"/>
+                </Style>
+            </StackPanel.Resources>
+            <local:ProgressLamp State="{Binding ProgressLamp1State.Value}"/>
+            <local:ProgressLamp State="{Binding ProgressLamp2State.Value}"/>
+            <local:ProgressLamp State="{Binding ProgressLamp3State.Value}"/>
+            <local:ProgressLamp State="{Binding ProgressLamp4State.Value}"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Margin="0 0 7 0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource UneditableTextBox}">
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Width="140" Text="{Binding ConnectionState.Value, Mode=OneWay}"/>
+            <TextBox Margin="90 0 0 0" Width="140" Text="{Binding DownloadState.Value, Mode=OneWay}"/>
+            <TextBox Margin="10 0 0 0" Width="140" Text="{Binding TicketPrinterState.Value, Mode=OneWay}"/>
+            <TextBox Margin="10 0 0 0" Width="140" Text=""/>
+            <TextBox Margin="10 0 0 0" Width="140" Text="{Binding JournalPrinterState.Value, Mode=OneWay}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

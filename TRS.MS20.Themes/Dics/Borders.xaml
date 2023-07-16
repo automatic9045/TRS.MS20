@@ -1,0 +1,54 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./Brushes.xaml"/>
+        <ResourceDictionary>
+            <Style x:Key="ClassicBorder" TargetType="ContentControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Grid>
+                                <Border BorderBrush="White" BorderThickness="2" SnapsToDevicePixels="True"/>
+                                <Border Margin="0,0,1,1" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" SnapsToDevicePixels="True"/>
+                                <ContentPresenter/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Focusable" Value="False"/>
+            </Style>
+
+            <Style x:Key="ThinPressedClassicBorder" TargetType="ContentControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Grid>
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" SnapsToDevicePixels="True"/>
+                                <Border BorderBrush="White" BorderThickness="0,0,1,1" SnapsToDevicePixels="True"/>
+                                <ContentPresenter/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Focusable" Value="False"/>
+            </Style>
+
+            <Style x:Key="SunkenClassicBorder" TargetType="ContentControl">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ContentControl">
+                            <Grid Background="{TemplateBinding Background}">
+                                <Border BorderBrush="{StaticResource DarkBorderBrush}" BorderThickness="2" SnapsToDevicePixels="True"/>
+                                <Border BorderBrush="#E0E0E0" BorderThickness="0,0,2,2" SnapsToDevicePixels="True"/>
+                                <Border BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" SnapsToDevicePixels="True"/>
+                                <Border BorderBrush="White" BorderThickness="0,0,1,1" SnapsToDevicePixels="True"/>
+                                <ContentPresenter/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Setter Property="Focusable" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

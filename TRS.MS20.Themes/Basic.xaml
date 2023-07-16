@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:theme="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Classic">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="./Dics/Borders.xaml"/>
+        <ResourceDictionary Source="./Dics/Brushes.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/Buttons.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/GroupBox.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/Label.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/Separator.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/TextBlock.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/TextBox.xaml"/>
+        <ResourceDictionary Source="./Dics/Components/UneditableTextBox.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

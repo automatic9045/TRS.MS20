@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="TRS.MS20.Presentation.Components.UpperStatusBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TRS.MS20.Presentation.Components"
+             xmlns:converters="clr-namespace:TRS.MS20.Presentation.Converters"
+             xmlns:components="clr-namespace:TRS.MS20.Themes.Components;assembly=TRS.MS20.Themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="23" d:DesignWidth="1020">
+    <UserControl.DataContext>
+        <local:UpperStatusBarViewModel/>
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <converters:DisplayableStateConverter x:Key="StateConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <components:WindowInputBindings>
+            <components:WindowInputBindings.Items>
+                <KeyBinding Key="{Binding HoldKey.Value}" Command="{Binding HoldKeyCommand}"/>
+                <KeyBinding Key="{Binding ReleaseKey.Value}" Command="{Binding ReleaseButtonCommand}"/>
+                <KeyBinding Key="{Binding SendKey.Value}" Command="{Binding SendButtonCommand}"/>
+            </components:WindowInputBindings.Items>
+        </components:WindowInputBindings>
+        
+        <StackPanel Margin="5 0 0 1" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox" BasedOn="{StaticResource UneditableTextBox}">
+                    <Setter Property="FontSize" Value="16"/>
+                </Style>
+            </StackPanel.Resources>
+            <TextBox Width="90" Text="{Binding TrainingState.Value, Converter={StaticResource StateConverter}, Mode=OneWay}"/>
+            <TextBox Margin="20 0 0 0" Width="115" Text="{Binding ModeState.Value, Converter={StaticResource StateConverter}, Mode=OneWay}"/>
+            <TextBox Margin="15 0 0 0" Width="140" Text="{Binding Alert.Value, Converter={StaticResource StateConverter}, Mode=OneWay}"/>
+            <TextBox Margin="15 0 0 0" Width="140" Text="{Binding OneTimeState.Value, Converter={StaticResource StateConverter}, Mode=OneWay}"/>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Right" Margin="0 0 7 0" Orientation="Horizontal">
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Template" Value="{StaticResource ThickButtonTemplate}"/>
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+                <Style TargetType="ToggleButton" BasedOn="{StaticResource {x:Type ToggleButton}}">
+                    <Setter Property="Template" Value="{StaticResource ThickButtonTemplate}"/>
+                    <Setter Property="Width" Value="100"/>
+                    <Setter Property="FontSize" Value="18"/>
+                </Style>
+            </StackPanel.Resources>
+            <ToggleButton Content="保持" Command="{Binding HoldButtonCommand}"
+                          IsChecked="{Binding IsHoldButtonChecked.Value, Mode=TwoWay}"/>
+            <Button Content="開放" Command="{Binding ReleaseButtonCommand}"/>
+            <Button Content="発信" Command="{Binding SendButtonCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
